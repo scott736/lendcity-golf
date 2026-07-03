@@ -61,7 +61,9 @@ export const sponsorTiers: SponsorTier[] = [
     sponsors: [
       {
         name: 'Jim Broad',
+        subtitle: 'RE/MAX Capital Diamond',
         logo: '/images/sponsors/jim-broad.webp',
+        url: 'https://www.jimbroad.ca/',
         nofollow: true,
       },
     ],
@@ -188,6 +190,13 @@ export const sponsorTiers: SponsorTier[] = [
       {
         name: "Owl's Nest Emporium",
         logo: '/images/sponsors/owls-nest-emporium.png',
+        nofollow: true,
+      },
+      {
+        name: 'Windsor Firefighters',
+        subtitle: 'Benefit Fund',
+        logo: '/images/sponsors/windsor-firefighters-benefit-fund.webp',
+        url: 'https://benefitfund.ca/',
         nofollow: true,
       },
     ],

@@ -95,7 +95,11 @@ function tierEmoji(tier: SponsorTier) {
               <div
                 class:list={[
                   'mx-auto mt-6 grid gap-6',
-                  tier.sponsors.length > 1 ? 'max-w-5xl sm:grid-cols-2 lg:grid-cols-3' : 'max-w-xl',
+                  tier.sponsors.length > 1
+                    ? 'max-w-5xl sm:grid-cols-2 lg:grid-cols-3'
+                    : tier.id === 'gold'
+                      ? 'max-w-4xl'
+                      : 'max-w-xl',
                 ]}
               >
                 {
@@ -110,7 +114,12 @@ function tierEmoji(tier: SponsorTier) {
                         <img
                           src={sponsor.logo}
                           alt={sponsor.name}
-                          class="mx-auto h-20 w-full max-w-sm object-contain md:h-24"
+                          class:list={[
+                            'mx-auto w-full object-contain',
+                            tier.id === 'gold'
+                              ? 'max-h-56 max-w-3xl md:max-h-64'
+                              : 'h-20 max-w-sm md:h-24',
+                          ]}
                         />
                         <div class="mt-5 text-center">
                           <h3 class="font-display text-xl font-bold text-navy">{sponsor.name}</h3>
@@ -122,7 +131,12 @@ function tierEmoji(tier: SponsorTier) {
                         <img
                           src={sponsor.logo}
                           alt={sponsor.name}
-                          class="mx-auto h-20 w-full max-w-sm object-contain md:h-24"
+                          class:list={[
+                            'mx-auto w-full object-contain',
+                            tier.id === 'gold'
+                              ? 'max-h-56 max-w-3xl md:max-h-64'
+                              : 'h-20 max-w-sm md:h-24',
+                          ]}
                         />
                         <div class="mt-5 text-center">
                           <h3 class="font-display text-xl font-bold text-navy">{sponsor.name}</h3>
