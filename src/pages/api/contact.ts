@@ -31,7 +31,7 @@ export const POST: APIRoute = async ({ request }) => {
             ${message.replace(/\n/g, '<br />')}
           </div>
           <hr style="border: none; border-top: 1px solid #e8dfd0; margin: 25px 0;" />
-          <p style="color: #5C6661; font-size: 11px; margin-bottom: 0;">Sent from the LendCity Golf Tournament website contact form.</p>
+          <p style="color: #5C6661; font-size: 11px; margin-bottom: 0;">Sent from the LendCity<sup style="font-size: 8px;">TM</sup> Golf Tournament website contact form.</p>
         </div>
       `,
     });

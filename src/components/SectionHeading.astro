@@ -1,4 +1,6 @@
 ---
+import { lendCityMarkup } from '../lib/lendcity-mark';
+
 interface Props {
   label: string;
   title: string;
@@ -13,5 +15,5 @@ const align = centered ? 'text-center' : '';
 <div class:list={['mb-12', align]}>
   <p class="section-label">{label}</p>
   <h2 class="section-title">{title}</h2>
-  {lead && <p class:list={['section-lead', centered && 'mx-auto']}>{lead}</p>}
+  {lead && <p class:list={['section-lead', centered && 'mx-auto']} set:html={lendCityMarkup(lead)} />}
 </div>

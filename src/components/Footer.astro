@@ -1,3 +1,8 @@
+---
+import { event } from '../data/event';
+import BrandedEventName from './BrandedEventName.astro';
+import LendCityMark from './LendCityMark.astro';
+---
 <footer class="border-t border-gold/20 bg-augusta-dark py-16 text-white">
   <div class="mx-auto max-w-7xl px-6">
     <div class="grid gap-12 md:grid-cols-3">
@@ -5,13 +10,12 @@
         <a href="https://lendcity.ca/" target="_blank" rel="noopener noreferrer" class="inline-block">
           <img
             src="/images/brand/lendcity-logo.png"
-            alt="LendCity Mortgages"
+            alt="LendCity™ Mortgages"
             class="h-9 w-auto brightness-0 invert transition-opacity hover:opacity-80"
           />
         </a>
         <p class="mt-4 max-w-xs text-sm leading-relaxed text-cream/60">
-          LendCity&rsquo;s Annual Charity Golf Tournament supporting Harmony In Action and adults with
-          disabilities across Windsor-Essex.
+          <BrandedEventName /> supporting Harmony In Action and adults with disabilities across Windsor-Essex.
         </p>
         <a
           href="https://lendcity.ca/"
@@ -26,7 +30,7 @@
       <div>
         <h3 class="text-sm font-bold uppercase tracking-wider text-gold-light">Event Details</h3>
         <ul class="mt-4 space-y-2 text-sm text-cream/60">
-          <li>Friday, July 17, 2026</li>
+          <li>{event.dateDisplay}</li>
           <li>Sutton Creek Golf Course</li>
           <li>2135 County Rd 12, Essex, ON</li>
         </ul>
@@ -63,7 +67,7 @@
       <p>
         &copy; {new Date().getFullYear()}{' '}
         <a href="https://lendcity.ca/" target="_blank" rel="noopener noreferrer" class="text-cream/70 hover:text-white">
-          LendCity
+          <LendCityMark />
         </a>. All proceeds benefit Harmony In Action.
       </p>
       <p>

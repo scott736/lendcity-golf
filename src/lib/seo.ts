@@ -1,9 +1,10 @@
-import { event, faqs, absoluteUrl } from '../data/event';
+import { event, faqs, absoluteUrl, brandedName } from '../data/event';
+import { lendCityText } from './lendcity-mark';
 import { titleSponsor, sponsors } from '../data/sponsors';
 
 export function getPageTitle(pageTitle?: string): string {
-  if (pageTitle) return `${pageTitle} | ${event.shortName} ${event.year}`;
-  return `${event.name} ${event.year} | Windsor-Essex Charity Golf | ${event.beneficiary.name}`;
+  if (pageTitle) return `${pageTitle} | ${lendCityText(`${event.shortName} ${event.year}`)}`;
+  return `${brandedName} | Windsor-Essex Charity Golf | ${event.beneficiary.name}`;
 }
 
 export function getPageDescription(): string {
@@ -349,7 +350,7 @@ export function getLlmsTxt(): string {
     ...sponsors.map((s) => s.name),
   ].join(', ');
 
-  return `# ${event.name} ${event.year}
+  return lendCityText(`# ${event.name} ${event.year}
 
 > ${event.tagline}
 
@@ -385,5 +386,5 @@ ${faqs.map((f) => `### ${f.question}\n${f.answer}`).join('\n\n')}
 - LendCity Mortgages: ${event.organizer.url}
 - Harmony In Action: ${event.beneficiary.url}
 - Title sponsor: ${event.titleSponsor.name} — ${event.titleSponsor.url}
-`;
+`);
 }

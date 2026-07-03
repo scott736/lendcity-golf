@@ -1,6 +1,11 @@
 ---
 import { titleSponsor, sponsors, sponsorRel } from '../data/sponsors';
 import SectionHeading from './SectionHeading.astro';
+import LendCityMark from './LendCityMark.astro';
+
+function sponsorAlt(name: string) {
+  return name === 'LendCity' ? 'LendCity™' : name;
+}
 ---
 
 <section id="sponsors" class="bg-white py-20 lg:py-28">
@@ -76,14 +81,14 @@ import SectionHeading from './SectionHeading.astro';
                 <div class="flex h-28 w-full items-center justify-center">
                   <img
                     src={sponsor.logo}
-                    alt={sponsor.name}
-                    title={sponsor.name}
+                    alt={sponsorAlt(sponsor.name)}
+                    title={sponsorAlt(sponsor.name)}
                     class="max-h-full max-w-full object-contain"
                     loading="lazy"
                   />
                 </div>
                 <p class="mt-3 text-center text-xs font-bold uppercase tracking-wider text-muted/80">
-                  {sponsor.name}
+                  {sponsor.name === 'LendCity' ? <LendCityMark /> : sponsor.name}
                 </p>
               </a>
             ) : (
@@ -91,14 +96,14 @@ import SectionHeading from './SectionHeading.astro';
                 <div class="flex h-28 w-full items-center justify-center">
                   <img
                     src={sponsor.logo}
-                    alt={sponsor.name}
-                    title={sponsor.name}
+                    alt={sponsorAlt(sponsor.name)}
+                    title={sponsorAlt(sponsor.name)}
                     class="max-h-full max-w-full object-contain"
                     loading="lazy"
                   />
                 </div>
                 <p class="mt-3 text-center text-xs font-bold uppercase tracking-wider text-muted/80">
-                  {sponsor.name}
+                  {sponsor.name === 'LendCity' ? <LendCityMark /> : sponsor.name}
                 </p>
               </div>
             ),

@@ -1,4 +1,5 @@
 ---
+import { brandedName } from '../data/event';
 import SectionHeading from './SectionHeading.astro';
 ---
 
@@ -7,7 +8,7 @@ import SectionHeading from './SectionHeading.astro';
     <SectionHeading
       label="Join Us"
       title="Register to Play"
-      lead="Secure your spot at the 2026 LendCity Charity Golf Tournament. Individual golfers and foursomes welcome."
+      lead={`Secure your spot at the ${brandedName}. Individual golfers and foursomes welcome.`}
       centered={true}
     />
 

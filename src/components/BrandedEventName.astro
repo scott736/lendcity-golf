@@ -1,0 +1,14 @@
+---
+import { event } from '../data/event';
+import LendCityMark from './LendCityMark.astro';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<span class:list={['inline', className]}>
+  {event.year}{' '}<LendCityMark />{' '}Golf Classic
+</span>

@@ -13,7 +13,7 @@ const allPhotos = fs
 const initialCount = 24;
 const photos = allPhotos.map((filename) => ({
   src: `/images/gallery/${filename}`,
-  alt: `LendCity Golf Tournament photo`,
+  alt: `LendCity™ Golf Tournament photo`,
 }));
 ---
 
@@ -22,7 +22,7 @@ const photos = allPhotos.map((filename) => ({
     <SectionHeading
       label="Memories"
       title="Past Events"
-      lead="Relive the energy, camaraderie, and community spirit from previous LendCity golf tournaments."
+      lead="Relive the energy, camaraderie, and community spirit from previous LendCity™ golf tournaments."
       centered={true}
     />
 
@@ -185,7 +185,7 @@ const photos = allPhotos.map((filename) => ({
       btn.dataset.src = photos[i];
       btn.innerHTML = `
         <div class="overflow-hidden rounded-lg">
-          <img src="${photos[i]}" alt="LendCity Golf Tournament photo ${i + 1}" class="w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          <img src="${photos[i]}" alt="LendCity™ Golf Tournament photo ${i + 1}" class="w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
         </div>
       `;
       grid?.appendChild(btn);

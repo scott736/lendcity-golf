@@ -2,6 +2,7 @@
  * Central event configuration — update this file each year.
  * Used for page copy, SEO, structured data (JSON-LD), and llms.txt.
  */
+import { lendCityText } from '../lib/lendcity-mark';
 export const event = {
   year: 2026,
   name: 'LendCity Charity Golf Tournament',
@@ -122,6 +123,9 @@ export const faqs = [
     answer: `${event.titleSponsor.name} is the title sponsor of the ${event.year} LendCity Charity Golf Tournament.`,
   },
 ] as const;
+
+/** Public-facing title, e.g. "2026 LendCity™ Golf Classic" — updates when `year` changes */
+export const brandedName = lendCityText(`${event.year} ${event.shortName}`);
 
 export function absoluteUrl(path: string): string {
   const base = event.siteUrl.replace(/\/$/, '');

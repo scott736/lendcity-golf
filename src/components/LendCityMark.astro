@@ -1,0 +1,18 @@
+---
+interface Props {
+  class?: string;
+  /** Use in large hero headlines for a subtler mark */
+  variant?: 'default' | 'hero';
+}
+
+const { class: className, variant = 'default' } = Astro.props;
+
+const tmClass =
+  variant === 'hero'
+    ? 'ml-px text-[0.28em] font-normal align-super leading-none opacity-75'
+    : 'ml-px text-[0.45em] font-normal align-super leading-none opacity-90';
+---
+
+<span class:list={['inline', className]}>
+  LendCity<sup class={tmClass}>TM</sup>
+</span>

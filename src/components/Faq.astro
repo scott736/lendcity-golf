@@ -1,5 +1,6 @@
 ---
-import { faqs } from '../data/event';
+import { faqs, brandedName } from '../data/event';
+import { lendCityMarkup } from '../lib/lendcity-mark';
 import SectionHeading from './SectionHeading.astro';
 ---
 
@@ -8,7 +9,7 @@ import SectionHeading from './SectionHeading.astro';
     <SectionHeading
       label="Questions & Answers"
       title="Tournament FAQ"
-      lead="Everything golfers and sponsors need to know about the LendCity Charity Golf Tournament."
+      lead={`Everything golfers and sponsors need to know about the ${brandedName}.`}
       centered={true}
     />
 
@@ -17,7 +18,7 @@ import SectionHeading from './SectionHeading.astro';
         faqs.map((faq) => (
           <details class="group py-5">
             <summary class="flex cursor-pointer list-none items-start justify-between gap-4 font-display text-lg font-semibold text-navy marker:content-none">
-              <span>{faq.question}</span>
+              <span set:html={lendCityMarkup(faq.question)} />
               <span
                 class="mt-1 shrink-0 text-gold transition-transform group-open:rotate-45"
                 aria-hidden="true"
@@ -25,7 +26,7 @@ import SectionHeading from './SectionHeading.astro';
                 +
               </span>
             </summary>
-            <p class="mt-3 pr-8 text-base leading-relaxed text-muted">{faq.answer}</p>
+            <p class="mt-3 pr-8 text-base leading-relaxed text-muted" set:html={lendCityMarkup(faq.answer)} />
           </details>
         ))
       }
