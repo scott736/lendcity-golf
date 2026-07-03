@@ -119,7 +119,7 @@ export function getOrganizationJsonLd() {
     '@type': 'Organization',
     name: event.organizer.name,
     url: event.organizer.url,
-    logo: absoluteUrl('/images/brand/lendcity-logo.png'),
+    logo: absoluteUrl('/images/brand/lendcity-logo.webp'),
     sameAs: [event.organizer.url, absoluteUrl('/')],
     contactPoint: {
       '@type': 'ContactPoint',

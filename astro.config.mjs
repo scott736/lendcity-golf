@@ -8,6 +8,9 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://lendcityevents.ca',
   output: 'static',
+  build: {
+    inlineStylesheets: 'always',
+  },
   adapter: vercel({
     maxDuration: 120,
     imageService: true,

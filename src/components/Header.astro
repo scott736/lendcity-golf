@@ -7,16 +7,23 @@ const navLinks = [
   { href: '#faq', label: 'FAQ' },
   { href: '#contact', label: 'Contact' },
 ];
+
+interface Props {
+  logoFetchPriority?: 'high' | 'low' | 'auto';
+}
+
+const { logoFetchPriority = 'high' } = Astro.props;
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 border-b border-sand bg-white/95 shadow-sm backdrop-blur-md">
   <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
     <a href="#" class="group flex items-center">
       <img
-        src="/images/brand/lendcity-logo.png"
+        src="/images/brand/lendcity-logo.webp"
         alt="LendCity™"
-        width="160"
-        height="40"
+        width="210"
+        height="63"
+        fetchpriority={logoFetchPriority}
         decoding="async"
         class="h-9 w-auto transition-transform duration-300 group-hover:scale-102 md:h-10"
       />

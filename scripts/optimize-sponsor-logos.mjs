@@ -6,7 +6,7 @@ const sponsorsDir = path.join(process.cwd(), 'public/images/sponsors');
 
 /** Logos referenced in src/data/sponsors.ts (SVGs are skipped). */
 const activeLogos = [
-  { file: 'navacord-title-partner.png', square: true },
+  { file: 'navacord-title-partner.webp', square: true },
   { file: 'marcel-parent-pinnacle.webp' },
   { file: 'jim-broad.webp', black: true },
   { file: 'the-pointwellness.png.webp' },

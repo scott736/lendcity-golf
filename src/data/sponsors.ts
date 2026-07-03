@@ -34,7 +34,7 @@ export const sponsorTiers: SponsorTier[] = [
     sponsors: [
       {
         name: 'Navacord',
-        logo: '/images/sponsors/navacord-title-partner.png',
+        logo: '/images/sponsors/navacord-title-partner.webp',
         url: 'https://navacord.com/',
         nofollow: true,
       },
