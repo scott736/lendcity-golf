@@ -1,6 +1,6 @@
 import { event, faqs, absoluteUrl, brandedName } from '../data/event';
 import { lendCityText } from './lendcity-mark';
-import { titleSponsor, sponsors } from '../data/sponsors';
+import { titleSponsor, platinumSponsor, getAllSponsors, sponsorTiers } from '../data/sponsors';
 
 export function getPageTitle(pageTitle?: string): string {
   if (pageTitle) return `${pageTitle} | ${lendCityText(`${event.shortName} ${event.year}`)}`;
@@ -64,7 +64,8 @@ export function getEventJsonLd() {
     },
     sponsor: [
       { '@type': 'Organization', name: titleSponsor.name, url: titleSponsor.url },
-      ...sponsors
+      { '@type': 'Organization', name: platinumSponsor.name, url: platinumSponsor.url },
+      ...getAllSponsors()
         .filter((s) => s.url)
         .slice(0, 12)
         .map((s) => ({ '@type': 'Organization', name: s.name, url: s.url })),
@@ -345,10 +346,9 @@ export function getAllJsonLd() {
 }
 
 export function getLlmsTxt(): string {
-  const sponsorList = [
-    `${titleSponsor.name} (title sponsor)`,
-    ...sponsors.map((s) => s.name),
-  ].join(', ');
+  const sponsorList = sponsorTiers
+    .map((tier) => `${tier.label}: ${tier.sponsors.map((s) => s.name).join(', ')}`)
+    .join('; ');
 
   return lendCityText(`# ${event.name} ${event.year}
 
@@ -371,7 +371,7 @@ ${absoluteUrl('/')}
 - Register: ${absoluteUrl('/#register')}
 
 ## What's included
-18 holes with golf cart, breakfast, lunch, dinner, welcome golf bag, on-course contests, raffles, and networking.
+18 holes with golf cart, ${event.meals.breakfast.toLowerCase()} (${event.meals.breakfastNote.toLowerCase()}), lunch, dinner, welcome golf bag, on-course contests, raffles, and networking.
 
 ## Sponsors (${event.year})
 ${sponsorList}

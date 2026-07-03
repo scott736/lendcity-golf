@@ -47,15 +47,20 @@ export const event = {
     currency: 'CAD',
   },
 
-  /** Sponsorship tiers — update annually from the sponsorship package PDF */
+  meals: {
+    breakfast: 'Donuts, coffee, cookies, and muffins',
+    breakfastNote: 'Not a hot breakfast',
+  },
+
+  /** Sponsorship tiers — aligned with the tournament pledge spreadsheet */
   sponsorshipTiers: [
+    { name: 'Title Sponsor', price: 5000, description: 'Premier presenting partner recognition across all tournament materials' },
     { name: 'Platinum Sponsor', price: 3000, description: 'Logo on correspondence, hole sign, cart sign, 4 golfer entries, website & social recognition' },
     { name: 'Gold Sponsor', price: 2000, description: 'Hole sign, cart sign, 2 golfer entries, website & social recognition' },
-    { name: 'Welcome Golf Bag Sponsor', price: 2000, description: 'Branded item in each welcome bag, 4 golfer entries, opening remarks mention' },
-    { name: 'Range Sponsor', price: 850, description: 'Range signage and registration table recognition' },
-    { name: 'Turn Sponsor', price: 850, description: 'Lunch table signage and branded giveaway opportunity' },
-    { name: 'Breakfast Sponsor', price: 750, description: 'Breakfast table signage and logo on breakfast items' },
+    { name: 'Range Sponsor', price: 750, description: 'Range signage and registration table recognition' },
+    { name: 'Turn Sponsor', price: 750, description: 'Lunch table signage and branded giveaway opportunity' },
     { name: 'Cart Sponsor', price: 600, description: 'Cart signage and website recognition' },
+    { name: 'Breakfast Sponsor', price: 750, description: 'Breakfast table signage and logo on breakfast items' },
     { name: 'Hole Sponsor', price: 200, description: 'Hole signage and website recognition' },
   ],
 
@@ -91,7 +96,7 @@ export const event = {
 export const faqs = [
   {
     question: 'When is the LendCity Charity Golf Tournament?',
-    answer: `The ${event.year} LendCity Charity Golf Tournament is on ${event.dateDisplay}. Registration opens at ${event.startTime} with breakfast, followed by a shotgun start at ${event.shotgunStart}.`,
+    answer: `The ${event.year} LendCity Charity Golf Tournament is on ${event.dateDisplay}. Registration opens at ${event.startTime} with ${event.meals.breakfast.toLowerCase()} (${event.meals.breakfastNote.toLowerCase()}), followed by a shotgun start at ${event.shotgunStart}.`,
   },
   {
     question: 'Where is the LendCity golf tournament held?',
@@ -111,12 +116,12 @@ export const faqs = [
   },
   {
     question: 'How can my business sponsor the LendCity golf tournament?',
-    answer: `Businesses can sponsor the tournament at multiple levels including title, platinum, gold, cart, and hole sponsorship. Contact ${event.organizer.email} or use the contact form at lendcityevents.ca to request the sponsorship package.`,
+    answer: `Businesses can sponsor the tournament at multiple levels including title, platinum, gold, range, turn, cart, breakfast, and hole sponsorship. Contact ${event.organizer.email} or use the contact form at lendcityevents.ca to request the sponsorship package.`,
   },
   {
     question: 'What is included in the tournament registration?',
     answer:
-      'Registration includes 18 holes of golf at Sutton Creek Golf Course with a golf cart, breakfast, lunch and dinner, a welcome golf bag, on-course contests, raffles, and a networking reception with local business leaders.',
+      `Registration includes 18 holes of golf at Sutton Creek Golf Course with a golf cart, ${event.meals.breakfast.toLowerCase()} (${event.meals.breakfastNote.toLowerCase()}), lunch and dinner, a welcome golf bag, on-course contests, raffles, and a networking reception with local business leaders.`,
   },
   {
     question: 'Who is the title sponsor of the LendCity Golf Classic?',

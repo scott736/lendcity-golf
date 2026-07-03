@@ -1,5 +1,5 @@
 ---
-import { brandedName } from '../data/event';
+import { brandedName, event } from '../data/event';
 import SectionHeading from './SectionHeading.astro';
 ---
 
@@ -33,7 +33,7 @@ import SectionHeading from './SectionHeading.astro';
           </li>
           <li class="flex items-start gap-3">
             <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-augusta/10 text-augusta">✓</span>
-            <span>Complete breakfast, lunch, and dinner buffet</span>
+            <span>{event.meals.breakfast} for breakfast ({event.meals.breakfastNote.toLowerCase()}), plus lunch and dinner</span>
           </li>
           <li class="flex items-start gap-3">
             <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-augusta/10 text-augusta">✓</span>

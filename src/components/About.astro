@@ -1,5 +1,6 @@
 ---
 import SectionHeading from './SectionHeading.astro';
+import { event } from '../data/event';
 ---
 
 <!-- About Section -->
@@ -105,8 +106,8 @@ import SectionHeading from './SectionHeading.astro';
           },
           {
             icon: '🍽️',
-            title: 'Gourmet Dining',
-            desc: 'Includes complete breakfast, lunch, and a networking dinner reception.',
+            title: 'Meals Included',
+            desc: `${event.meals.breakfast} for breakfast (${event.meals.breakfastNote.toLowerCase()}), plus lunch and a networking dinner reception.`,
           },
           {
             icon: '🎁',
@@ -135,7 +136,7 @@ import SectionHeading from './SectionHeading.astro';
         <div class="relative border-l-2 border-sand pl-8 space-y-10">
           {
             [
-              { time: '8:00 AM', title: 'Registration & Breakfast', desc: 'Check-in, collect your welcome bag, and enjoy a hot breakfast.' },
+              { time: '8:00 AM', title: 'Registration & Breakfast', desc: `Check-in, collect your welcome bag, and enjoy ${event.meals.breakfast.toLowerCase()}. ${event.meals.breakfastNote}.` },
               { time: '9:30 AM', title: 'Shotgun Start', desc: 'Golfers head to their starting holes for an incredible 18-hole scramble.' },
               { time: '11:30 AM', title: 'The Turn (Lunch)', desc: 'Grab a fresh lunch at the turn sponsor station.' },
               { time: '3:00 PM', title: 'Dinner & Awards Reception', desc: 'Join us in the clubhouse for dinner, networking, awards, and raffle draws.' },
