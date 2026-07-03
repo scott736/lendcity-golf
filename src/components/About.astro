@@ -107,7 +107,7 @@ import { event } from '../data/event';
           {
             icon: '🍽️',
             title: 'Meals Included',
-            desc: `${event.meals.breakfast} for breakfast (${event.meals.breakfastNote.toLowerCase()}), plus lunch and a networking dinner reception.`,
+            desc: `${event.meals.breakfast} for breakfast, plus lunch and a networking dinner reception.`,
           },
           {
             icon: '🎁',
@@ -136,7 +136,8 @@ import { event } from '../data/event';
         <div class="relative border-l-2 border-sand pl-8 space-y-10">
           {
             [
-              { time: event.startTimeDisplay, title: 'Registration & Breakfast', desc: `Check-in, collect your welcome bag, and enjoy ${event.meals.breakfast.toLowerCase()}. ${event.meals.breakfastNote}.` },
+              { time: event.startTimeDisplay, title: 'Registration & Breakfast', desc: `Check-in, collect your welcome bag, and enjoy ${event.meals.breakfast.toLowerCase()}.` },
+              { time: event.rangeOpenTimeDisplay, title: 'Driving Range Opens', desc: 'Warm up on the range before the shotgun start.' },
               { time: event.shotgunStartDisplay, title: 'Shotgun Start', desc: 'Golfers head to their starting holes for an incredible 18-hole scramble.' },
               { time: '11:30 AM', title: 'The Turn (Lunch)', desc: 'Grab a fresh lunch at the turn sponsor station.' },
               { time: '3:00 PM', title: 'Dinner & Awards Reception', desc: 'Join us in the clubhouse for dinner, networking, awards, and raffle draws.' },

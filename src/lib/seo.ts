@@ -371,7 +371,7 @@ ${absoluteUrl('/')}
 - Register: ${absoluteUrl('/#register')}
 
 ## What's included
-18 holes with golf cart, ${event.meals.breakfast.toLowerCase()} (${event.meals.breakfastNote.toLowerCase()}), lunch, dinner, welcome golf bag, on-course contests, raffles, and networking.
+18 holes with golf cart, ${event.meals.breakfast.toLowerCase()}, lunch, dinner, welcome golf bag, on-course contests, raffles, and networking.
 
 ## Sponsors (${event.year})
 ${sponsorList}

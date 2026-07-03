@@ -17,6 +17,10 @@ function tierEmoji(tier: SponsorTier) {
   return '';
 }
 
+function isPremierTier(tier: SponsorTier) {
+  return tier.id === 'title' || tier.id === 'platinum' || tier.id === 'gold';
+}
+
 ---
 
 <section id="sponsors" class="bg-white py-20 lg:py-28">
@@ -42,64 +46,54 @@ function tierEmoji(tier: SponsorTier) {
           </span>
 
           {
-            tier.layout === 'featured-dark' ? (
+            isPremierTier(tier) ? (
               <div class="mx-auto mt-6 max-w-2xl">
                 {
-                  tier.sponsors.map((sponsor) =>
-                    sponsor.url ? (
-                      <a
-                        href={sponsor.url}
-                        target="_blank"
-                        rel={sponsorRel(sponsor)}
-                        class="clubhouse-card clubhouse-card-dark gold-border-frame block p-10 transition hover:-translate-y-0.5 md:p-14"
-                      >
-                        <img
-                          src={sponsor.logo}
-                          alt={sponsor.name}
-                          class="mx-auto h-24 w-full max-w-md object-contain brightness-0 invert md:h-32"
-                        />
+                  tier.sponsors.map((sponsor) => {
+                    const cardClass = tier.id === 'title'
+                      ? 'clubhouse-card clubhouse-card-dark gold-border-frame block p-10 transition hover:-translate-y-0.5 md:p-14'
+                      : 'clubhouse-card gold-border-frame block p-10 transition hover:-translate-y-0.5 md:p-14';
+                    const imageClass = tier.id === 'title'
+                      ? 'mx-auto h-24 w-full max-w-md object-contain brightness-0 invert md:h-32'
+                      : 'mx-auto h-24 w-full max-w-md object-contain md:h-32';
+                    const nameClass = tier.id === 'title'
+                      ? 'font-display text-2xl font-bold text-gold-light'
+                      : 'font-display text-2xl font-bold text-navy';
+                    const subtitleClass = tier.id === 'title'
+                      ? 'mt-1 text-sm text-cream/70'
+                      : 'mt-1 text-sm text-muted';
+
+                    return sponsor.url ? (
+                      <a href={sponsor.url} target="_blank" rel={sponsorRel(sponsor)} class={cardClass}>
+                        <img src={sponsor.logo} alt={sponsor.name} class={imageClass} />
                         <div class="mt-6 text-center">
-                          <h3 class="font-display text-2xl font-bold text-gold-light">{sponsor.name}</h3>
+                          <h3 class={nameClass}>{sponsor.name}</h3>
                           {
                             sponsor.subtitle ? (
-                              <p class="mt-1 text-sm text-cream/70">{sponsor.subtitle}</p>
-                            ) : (
+                              <p class={subtitleClass}>{sponsor.subtitle}</p>
+                            ) : tier.id === 'title' ? (
                               <p class="mt-1 text-sm uppercase tracking-wider text-cream/60">Official Presenting Partner</p>
-                            )
+                            ) : null
                           }
                         </div>
                       </a>
                     ) : (
-                      <div class="clubhouse-card clubhouse-card-dark gold-border-frame p-10 md:p-14">
-                        <img
-                          src={sponsor.logo}
-                          alt={sponsor.name}
-                          class="mx-auto h-24 w-full max-w-md object-contain brightness-0 invert md:h-32"
-                        />
+                      <div class={cardClass.replace(' block', '')}>
+                        <img src={sponsor.logo} alt={sponsor.name} class={imageClass} />
                         <div class="mt-6 text-center">
-                          <h3 class="font-display text-2xl font-bold text-gold-light">{sponsor.name}</h3>
-                          {
-                            sponsor.subtitle ? (
-                              <p class="mt-1 text-sm text-cream/70">{sponsor.subtitle}</p>
-                            ) : (
-                              <p class="mt-1 text-sm uppercase tracking-wider text-cream/60">Official Presenting Partner</p>
-                            )
-                          }
+                          <h3 class={nameClass}>{sponsor.name}</h3>
+                          {sponsor.subtitle ? <p class={subtitleClass}>{sponsor.subtitle}</p> : null}
                         </div>
                       </div>
-                    ),
-                  )
+                    );
+                  })
                 }
               </div>
             ) : tier.layout === 'featured' ? (
               <div
                 class:list={[
                   'mx-auto mt-6 grid gap-6',
-                  tier.sponsors.length > 1
-                    ? 'max-w-5xl sm:grid-cols-2 lg:grid-cols-3'
-                    : tier.id === 'gold'
-                      ? 'max-w-4xl'
-                      : 'max-w-xl',
+                  tier.sponsors.length > 1 ? 'max-w-5xl sm:grid-cols-2 lg:grid-cols-3' : 'max-w-xl',
                 ]}
               >
                 {
@@ -114,12 +108,7 @@ function tierEmoji(tier: SponsorTier) {
                         <img
                           src={sponsor.logo}
                           alt={sponsor.name}
-                          class:list={[
-                            'mx-auto w-full object-contain',
-                            tier.id === 'gold'
-                              ? 'max-h-56 max-w-3xl md:max-h-64'
-                              : 'h-20 max-w-sm md:h-24',
-                          ]}
+                          class="mx-auto h-20 w-full max-w-sm object-contain md:h-24"
                         />
                         <div class="mt-5 text-center">
                           <h3 class="font-display text-xl font-bold text-navy">{sponsor.name}</h3>
@@ -131,12 +120,7 @@ function tierEmoji(tier: SponsorTier) {
                         <img
                           src={sponsor.logo}
                           alt={sponsor.name}
-                          class:list={[
-                            'mx-auto w-full object-contain',
-                            tier.id === 'gold'
-                              ? 'max-h-56 max-w-3xl md:max-h-64'
-                              : 'h-20 max-w-sm md:h-24',
-                          ]}
+                          class="mx-auto h-20 w-full max-w-sm object-contain md:h-24"
                         />
                         <div class="mt-5 text-center">
                           <h3 class="font-display text-xl font-bold text-navy">{sponsor.name}</h3>

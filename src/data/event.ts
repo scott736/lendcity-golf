@@ -15,6 +15,8 @@ export const event = {
   registrationDeadlineDisplay: 'July 1, 2026',
   startTime: '08:00',
   startTimeDisplay: '8:00 AM',
+  rangeOpenTime: '09:00',
+  rangeOpenTimeDisplay: '9:00 AM',
   shotgunStart: '10:00',
   shotgunStartDisplay: '10:00 AM',
 
@@ -51,7 +53,6 @@ export const event = {
 
   meals: {
     breakfast: 'Donuts, coffee, cookies, and muffins',
-    breakfastNote: 'Not a hot breakfast',
   },
 
   /** Sponsorship tiers — aligned with the tournament pledge spreadsheet */
@@ -98,7 +99,7 @@ export const event = {
 export const faqs = [
   {
     question: 'When is the LendCity Charity Golf Tournament?',
-    answer: `The ${event.year} LendCity Charity Golf Tournament is on ${event.dateDisplay}. Registration opens at ${event.startTimeDisplay} with ${event.meals.breakfast.toLowerCase()} (${event.meals.breakfastNote.toLowerCase()}), followed by a shotgun start at ${event.shotgunStartDisplay}.`,
+    answer: `The ${event.year} LendCity Charity Golf Tournament is on ${event.dateDisplay}. Registration opens at ${event.startTimeDisplay} with ${event.meals.breakfast.toLowerCase()}, the driving range opens at ${event.rangeOpenTimeDisplay}, and the shotgun start is at ${event.shotgunStartDisplay}.`,
   },
   {
     question: 'Where is the LendCity golf tournament held?',
@@ -123,7 +124,7 @@ export const faqs = [
   {
     question: 'What is included in the tournament registration?',
     answer:
-      `Registration includes 18 holes of golf at Sutton Creek Golf Course with a golf cart, ${event.meals.breakfast.toLowerCase()} (${event.meals.breakfastNote.toLowerCase()}), lunch and dinner, a welcome golf bag, on-course contests, raffles, and a networking reception with local business leaders.`,
+      `Registration includes 18 holes of golf at Sutton Creek Golf Course with a golf cart, ${event.meals.breakfast.toLowerCase()}, lunch and dinner, a welcome golf bag, on-course contests, raffles, and a networking reception with local business leaders.`,
   },
   {
     question: 'Who is the title sponsor of the LendCity Golf Classic?',
