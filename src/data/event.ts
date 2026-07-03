@@ -14,7 +14,9 @@ export const event = {
   registrationDeadline: '2026-07-01',
   registrationDeadlineDisplay: 'July 1, 2026',
   startTime: '08:00',
-  shotgunStart: '09:30',
+  startTimeDisplay: '8:00 AM',
+  shotgunStart: '10:00',
+  shotgunStartDisplay: '10:00 AM',
 
   venue: {
     name: 'Sutton Creek Golf Course',
@@ -96,7 +98,7 @@ export const event = {
 export const faqs = [
   {
     question: 'When is the LendCity Charity Golf Tournament?',
-    answer: `The ${event.year} LendCity Charity Golf Tournament is on ${event.dateDisplay}. Registration opens at ${event.startTime} with ${event.meals.breakfast.toLowerCase()} (${event.meals.breakfastNote.toLowerCase()}), followed by a shotgun start at ${event.shotgunStart}.`,
+    answer: `The ${event.year} LendCity Charity Golf Tournament is on ${event.dateDisplay}. Registration opens at ${event.startTimeDisplay} with ${event.meals.breakfast.toLowerCase()} (${event.meals.breakfastNote.toLowerCase()}), followed by a shotgun start at ${event.shotgunStartDisplay}.`,
   },
   {
     question: 'Where is the LendCity golf tournament held?',
