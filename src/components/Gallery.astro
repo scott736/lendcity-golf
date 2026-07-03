@@ -1,0 +1,198 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import SectionHeading from './SectionHeading.astro';
+
+const galleryDir = path.join(process.cwd(), 'public/images/gallery');
+const allPhotos = fs
+  .readdirSync(galleryDir)
+  .filter((f) => /\.(jpe?g|png|webp)$/i.test(f) && !f.startsWith('.opt-'))
+  .sort()
+  .reverse();
+
+const initialCount = 24;
+const photos = allPhotos.map((filename) => ({
+  src: `/images/gallery/${filename}`,
+  alt: `LendCity Golf Tournament photo`,
+}));
+---
+
+<section id="gallery" class="dimple-pattern py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-6">
+    <SectionHeading
+      label="Memories"
+      title="Past Events"
+      lead="Relive the energy, camaraderie, and community spirit from previous LendCity golf tournaments."
+      centered={true}
+    />
+
+    <!-- Gallery Grid -->
+    <div id="gallery-grid" class="columns-2 gap-4 md:columns-3 lg:columns-4">
+      {
+        photos.slice(0, initialCount).map((photo, i) => (
+          <button
+            type="button"
+            class="gallery-item gallery-trigger group mb-4 block w-full overflow-hidden rounded-xl border border-sand bg-white p-1.5 focus:outline-none focus:ring-2 focus:ring-gold"
+            data-index={i}
+            data-src={photo.src}
+            aria-label={`View ${photo.alt} ${i + 1}`}
+          >
+            <div class="overflow-hidden rounded-lg">
+              <img
+                src={photo.src}
+                alt={`${photo.alt} ${i + 1}`}
+                class="w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading={i < 8 ? 'eager' : 'lazy'}
+              />
+            </div>
+          </button>
+        ))
+      }
+    </div>
+
+    {
+      allPhotos.length > initialCount && (
+        <div class="mt-12 text-center">
+          <button
+            id="load-more-gallery"
+            type="button"
+            class="btn-outline-gold"
+            data-loaded={initialCount}
+            data-total={allPhotos.length}
+          >
+            Load More Photos
+          </button>
+          <p id="gallery-count" class="mt-3 text-sm font-semibold text-muted">
+            Showing {initialCount} of {allPhotos.length} photos
+          </p>
+        </div>
+      )
+    }
+  </div>
+
+  <!-- Lightbox -->
+  <div
+    id="lightbox"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-augusta-dark/95 p-4 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Photo viewer"
+  >
+    <!-- Close Button -->
+    <button
+      id="lightbox-close"
+      type="button"
+      class="absolute right-6 top-6 rounded-full border border-gold/30 bg-gold/10 p-3 text-gold-light transition hover:bg-gold/20 hover:text-white"
+      aria-label="Close"
+    >
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <!-- Prev Button -->
+    <button
+      id="lightbox-prev"
+      type="button"
+      class="absolute left-6 rounded-full border border-gold/30 bg-gold/10 p-3 text-gold-light transition hover:bg-gold/20 hover:text-white"
+      aria-label="Previous photo"
+    >
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    </button>
+
+    <!-- Main Image -->
+    <div class="relative max-h-[85vh] max-w-full overflow-hidden rounded-xl border border-gold/20 bg-augusta p-2 shadow-2xl">
+      <img id="lightbox-img" src="" alt="" class="max-h-[80vh] max-w-full rounded-lg object-contain" />
+    </div>
+
+    <!-- Next Button -->
+    <button
+      id="lightbox-next"
+      type="button"
+      class="absolute right-6 rounded-full border border-gold/30 bg-gold/10 p-3 text-gold-light transition hover:bg-gold/20 hover:text-white"
+      aria-label="Next photo"
+    >
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+  </div>
+</section>
+
+<script define:vars={{ allPhotos, initialCount }}>
+  const photos = allPhotos.map((filename) => `/images/gallery/${filename}`);
+  let currentIndex = 0;
+  let loadedCount = initialCount;
+
+  const grid = document.getElementById('gallery-grid');
+  const loadMoreBtn = document.getElementById('load-more-gallery');
+  const countEl = document.getElementById('gallery-count');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  function openLightbox(index) {
+    currentIndex = index;
+    lightboxImg.src = photos[index];
+    lightboxImg.alt = `Tournament photo ${index + 1}`;
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  function showPhoto(index) {
+    currentIndex = (index + photos.length) % photos.length;
+    lightboxImg.src = photos[currentIndex];
+  }
+
+  grid?.addEventListener('click', (e) => {
+    const trigger = e.target.closest('.gallery-trigger');
+    if (trigger) openLightbox(Number(trigger.dataset.index));
+  });
+
+  document.getElementById('lightbox-close')?.addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-prev')?.addEventListener('click', () => showPhoto(currentIndex - 1));
+  document.getElementById('lightbox-next')?.addEventListener('click', () => showPhoto(currentIndex + 1));
+
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (lightbox?.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showPhoto(currentIndex - 1);
+    if (e.key === 'ArrowRight') showPhoto(currentIndex + 1);
+  });
+
+  loadMoreBtn?.addEventListener('click', () => {
+    const batch = 24;
+    const next = Math.min(loadedCount + batch, photos.length);
+
+    for (let i = loadedCount; i < next; i++) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className =
+        'gallery-item gallery-trigger group mb-4 block w-full overflow-hidden rounded-xl border border-sand bg-white p-1.5 focus:outline-none focus:ring-2 focus:ring-gold';
+      btn.dataset.index = String(i);
+      btn.dataset.src = photos[i];
+      btn.innerHTML = `
+        <div class="overflow-hidden rounded-lg">
+          <img src="${photos[i]}" alt="LendCity Golf Tournament photo ${i + 1}" class="w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+        </div>
+      `;
+      grid?.appendChild(btn);
+    }
+
+    loadedCount = next;
+    if (countEl) countEl.textContent = `Showing ${loadedCount} of ${photos.length} photos`;
+    if (loadedCount >= photos.length) loadMoreBtn.style.display = 'none';
+  });
+</script>

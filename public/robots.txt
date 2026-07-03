@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# AI / answer-engine discovery
+Allow: /llms.txt
+
+Sitemap: https://lendcityevents.ca/sitemap-index.xml

@@ -1,0 +1,158 @@
+---
+import SectionHeading from './SectionHeading.astro';
+---
+
+<section id="register" class="dimple-pattern py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-6">
+    <SectionHeading
+      label="Join Us"
+      title="Register to Play"
+      lead="Secure your spot at the 2026 LendCity Charity Golf Tournament. Individual golfers and foursomes welcome."
+      centered={true}
+    />
+
+    <div class="grid gap-8 lg:grid-cols-2">
+      
+      <!-- Individual Golfer Card -->
+      <div class="clubhouse-card gold-border-frame p-8 md:p-10">
+        <div class="flex items-baseline justify-between gap-4">
+          <h3 class="font-display text-2xl font-bold text-navy">Individual Golfer</h3>
+          <p class="font-display text-4xl font-bold text-augusta">$180</p>
+        </div>
+        <p class="mt-4 text-muted leading-relaxed">
+          Perfect for solo players looking to network, meet fellow business leaders, and enjoy a full day on the course.
+        </p>
+        
+        <div class="my-6 h-px bg-sand"></div>
+        
+        <ul class="space-y-3 text-sm text-ink font-medium">
+          <li class="flex items-start gap-3">
+            <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-augusta/10 text-augusta">✓</span>
+            <span>18 holes of golf with golf cart included</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-augusta/10 text-augusta">✓</span>
+            <span>Complete breakfast, lunch, and dinner buffet</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-augusta/10 text-augusta">✓</span>
+            <span>Premium welcome golf bag with sponsor gifts</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-augusta/10 text-augusta">✓</span>
+            <span>Entry into all on-course contests and prize draws</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Foursome Card (Featured) -->
+      <div class="clubhouse-card clubhouse-card-dark gold-border-frame p-8 md:p-10 relative overflow-hidden">
+        <!-- Gold ribbon/badge -->
+        <div class="absolute right-0 top-0 bg-gradient-to-r from-gold-light to-gold px-6 py-1.5 text-xs font-bold uppercase tracking-widest text-augusta-dark rounded-bl-xl">
+          Most Popular
+        </div>
+
+        <div class="flex items-baseline justify-between gap-4">
+          <h3 class="font-display text-2xl font-bold text-white">Foursome Team</h3>
+          <p class="font-display text-4xl font-bold text-gold-light">$720</p>
+        </div>
+        <p class="mt-4 text-cream/70 leading-relaxed">
+          Bring your team — register all four golfers together and hit the links as a group. Great for corporate networking or friends.
+        </p>
+        
+        <div class="my-6 h-px bg-gold/20"></div>
+        
+        <ul class="space-y-3 text-sm text-cream/90">
+          <li class="flex items-start gap-3">
+            <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/20 text-gold-light">✓</span>
+            <span>Full tournament experience for 4 golfers</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/20 text-gold-light">✓</span>
+            <span>Two shared golf carts with custom cart signage</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/20 text-gold-light">✓</span>
+            <span>Four premium welcome golf bags</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/20 text-gold-light">✓</span>
+            <span>Group entry into all team scramble contests</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- How to Sign Up Section -->
+    <div class="clubhouse-card gold-border-frame mx-auto mt-16 max-w-4xl p-8 md:p-12">
+      <h3 class="text-center font-display text-3xl font-bold text-navy">Clubhouse Registration Guide</h3>
+      <p class="mx-auto mt-2 max-w-xl text-center text-sm text-muted">
+        Please follow these simple steps to secure your registration. Forms must be submitted by July 1, 2026.
+      </p>
+      
+      <div class="my-8 h-px bg-sand"></div>
+
+      <div class="grid gap-8 md:grid-cols-3">
+        <!-- Step 1 -->
+        <div class="text-center">
+          <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-augusta text-white font-bold text-lg shadow-md">
+            1
+          </div>
+          <h4 class="mt-4 font-display text-lg font-bold text-navy">Download Form</h4>
+          <p class="mt-2 text-sm text-muted leading-relaxed">
+            Download the official registration PDF and fill in player details.
+          </p>
+          <a
+            href="/LendCity-Golf-Registration-2026.pdf"
+            download
+            class="mt-4 inline-flex items-center gap-2 rounded-lg bg-cream-dark px-4 py-2 text-xs font-bold text-augusta-dark transition hover:bg-sand"
+          >
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+            </svg>
+            Download PDF
+          </a>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="text-center">
+          <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-augusta text-white font-bold text-lg shadow-md">
+            2
+          </div>
+          <h4 class="mt-4 font-display text-lg font-bold text-navy">Submit Payment</h4>
+          <p class="mt-2 text-sm text-muted leading-relaxed">
+            E-transfer registration fees to <br />
+            <a href="mailto:donation@harmonyinaction.com" class="font-bold text-augusta hover:underline">donation@harmonyinaction.com</a>
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="text-center">
+          <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-augusta text-white font-bold text-lg shadow-md">
+            3
+          </div>
+          <h4 class="mt-4 font-display text-lg font-bold text-navy">Email Completed Form</h4>
+          <p class="mt-2 text-sm text-muted leading-relaxed">
+            Email your completed form to <br />
+            <a href="mailto:events@lendcity.ca" class="font-bold text-augusta hover:underline">events@lendcity.ca</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-12 flex flex-wrap justify-center gap-4 border-t border-sand pt-8">
+        <a
+          href="mailto:events@lendcity.ca?subject=LendCity%20Golf%20Tournament%202026%20Registration"
+          class="btn-gold"
+        >
+          Email Registration
+        </a>
+        <a
+          href="mailto:events@lendcity.ca?subject=LendCity%20Golf%20Sponsorship%202026"
+          class="btn-outline-gold"
+        >
+          Become a Sponsor
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

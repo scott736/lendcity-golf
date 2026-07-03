@@ -1,0 +1,176 @@
+---
+import SectionHeading from './SectionHeading.astro';
+---
+
+<!-- About Section -->
+<section id="about" class="dimple-pattern py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+      
+      <!-- Left: Column with text -->
+      <div class="lg:col-span-7">
+        <SectionHeading label="Our Mission" title="Golf with Purpose" />
+        <div class="prose mt-6 max-w-none text-lg text-muted">
+          <p class="leading-relaxed">
+            Join approximately 100 local golfers, business owners, and community leaders for a day of
+            connection, fun, and impact. Every dollar raised goes directly to{' '}
+            <a
+              href="https://www.harmonyinaction.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-bold text-augusta underline decoration-gold-light decoration-2 underline-offset-4 hover:text-gold-dark hover:decoration-gold"
+            >
+              Harmony In Action
+            </a>
+            , supporting inclusive day programs and respite services for adults with disabilities
+            across Windsor and Essex County.
+          </p>
+          <p class="mt-4 leading-relaxed">
+            Last year&rsquo;s tournament raised{' '}
+            <strong class="font-bold text-augusta-dark">$15,000</strong>. With your partnership, our
+            goal is to exceed that amount and continue expanding critical programs and respite services
+            in our community.
+          </p>
+        </div>
+
+        <!-- Custom Golf Icon Grid -->
+        <div class="mt-10 grid gap-6 sm:grid-cols-2">
+          <div class="flex gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white border border-sand text-gold">
+              <!-- Golf Tee SVG -->
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v14M9 2h6M10 16h4M12 16v6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-display text-lg font-bold text-navy">Pristine Fairways</h4>
+              <p class="mt-1 text-sm text-muted">Experience 18 holes at the beautiful Sutton Creek Golf Course.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white border border-sand text-gold">
+              <!-- Golf Flag SVG -->
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 21V3l14 4-14 4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-display text-lg font-bold text-navy">Elite Contests</h4>
+              <p class="mt-1 text-sm text-muted">Compete in exciting on-course contests, raffles, and prize draws.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Stats cards -->
+      <div class="lg:col-span-5">
+        <div class="grid gap-4 sm:grid-cols-2">
+          {
+            [
+              { stat: '18', label: 'Championship Holes' },
+              { stat: '100+', label: 'Engaged Players' },
+              { stat: '$15K', label: 'Raised Last Year' },
+              { stat: '100%', label: 'Proceeds Donated' },
+            ].map((item) => (
+              <div class="clubhouse-card gold-border-frame p-8 text-center">
+                <p class="font-display text-5xl font-bold text-augusta">{item.stat}</p>
+                <p class="mt-3 text-xs font-bold uppercase tracking-wider text-muted">{item.label}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Tournament Experience & Schedule -->
+<section class="bg-white py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-6">
+    <SectionHeading
+      label="What's Included"
+      title="Your Tournament Experience"
+      centered={true}
+    />
+
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        [
+          {
+            icon: '⛳',
+            title: '18 Holes of Golf',
+            desc: 'Beautiful Sutton Creek Golf Course with golf cart included.',
+          },
+          {
+            icon: '🍽️',
+            title: 'Gourmet Dining',
+            desc: 'Includes complete breakfast, lunch, and a networking dinner reception.',
+          },
+          {
+            icon: '🎁',
+            title: 'Welcome Golf Bag',
+            desc: 'Each golfer receives a premium welcome bag with branded items.',
+          },
+          {
+            icon: '🏆',
+            title: 'Prizes & Raffles',
+            desc: 'Exciting on-course contests, prize draws, and high-value raffles.',
+          },
+        ].map((item) => (
+          <div class="clubhouse-card p-8 transition hover:-translate-y-1">
+            <span class="text-4xl" aria-hidden="true">{item.icon}</span>
+            <h3 class="mt-5 font-display text-xl font-bold text-navy">{item.title}</h3>
+            <p class="mt-2.5 text-sm leading-relaxed text-muted">{item.desc}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Timeline / Schedule Section -->
+    <div class="mt-20">
+      <p class="mb-10 text-center text-xs font-bold uppercase tracking-[0.2em] text-gold-dark">Tournament Schedule</p>
+      <div class="mx-auto max-w-3xl">
+        <div class="relative border-l-2 border-sand pl-8 space-y-10">
+          {
+            [
+              { time: '8:00 AM', title: 'Registration & Breakfast', desc: 'Check-in, collect your welcome bag, and enjoy a hot breakfast.' },
+              { time: '9:30 AM', title: 'Shotgun Start', desc: 'Golfers head to their starting holes for an incredible 18-hole scramble.' },
+              { time: '11:30 AM', title: 'The Turn (Lunch)', desc: 'Grab a fresh lunch at the turn sponsor station.' },
+              { time: '3:00 PM', title: 'Dinner & Awards Reception', desc: 'Join us in the clubhouse for dinner, networking, awards, and raffle draws.' },
+            ].map((event) => (
+              <div class="relative">
+                <!-- Bullet dot -->
+                <div class="absolute -left-[41px] top-1.5 h-4 w-4 rounded-full border-2 border-gold bg-white"></div>
+                <div class="grid gap-2 sm:grid-cols-4">
+                  <div class="font-display text-xl font-bold text-augusta">{event.time}</div>
+                  <div class="sm:col-span-3">
+                    <h4 class="font-display text-lg font-bold text-navy">{event.title}</h4>
+                    <p class="mt-1 text-sm text-muted leading-relaxed">{event.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Event Location Card -->
+    <div class="clubhouse-card gold-border-frame mx-auto mt-20 max-w-2xl p-8 text-center md:p-10">
+      <p class="section-label">Event Location</p>
+      <p class="font-display text-3xl font-bold text-navy">Sutton Creek Golf Course</p>
+      <p class="mt-2 text-muted">2135 County Rd 12, Essex, ON N8M 2X6</p>
+      <a
+        href="https://maps.google.com/?q=Sutton+Creek+Golf+Course+Essex+ON"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-outline-gold mt-6 px-6 py-2.5 text-xs font-bold"
+      >
+        Get Directions →
+      </a>
+    </div>
+
+  </div>
+</section>

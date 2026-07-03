@@ -1,0 +1,254 @@
+@import "tailwindcss";
+
+@theme {
+  --color-augusta: #0A3C26;
+  --color-augusta-dark: #042016;
+  --color-augusta-light: #1B5E3A;
+  --color-grass: #2E7D46;
+  --color-gold: #C5A059;
+  --color-gold-dark: #9E783B;
+  --color-gold-light: #E5C48F;
+  --color-navy: #111E2E;
+  --color-navy-dark: #0A131F;
+  --color-cream: #FAF8F4;
+  --color-cream-dark: #F3ECE0;
+  --color-sand: #E8DFD0;
+  --color-ink: #1C2521;
+  --color-muted: #5C6661;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Source Sans 3", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  line-height: 1.7;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-augusta) 15%, transparent);
+  color: var(--color-augusta-dark);
+}
+
+/* Subtle Golf Ball Dimple Texture */
+.dimple-pattern {
+  background-color: var(--color-cream);
+  background-image: radial-gradient(circle, rgba(10, 60, 38, 0.03) 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+}
+
+.dimple-pattern-dark {
+  background-color: var(--color-augusta-dark);
+  background-image: radial-gradient(circle, rgba(197, 160, 89, 0.04) 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+}
+
+/* Luxury Typography & Headings */
+.section-label {
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-label::before,
+.section-label::after {
+  content: "";
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  background-color: var(--color-gold-light);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--color-augusta-dark);
+}
+
+.section-lead {
+  margin-top: 1.25rem;
+  max-width: 44rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--color-muted);
+}
+
+/* Luxury Cards & Containers */
+.clubhouse-card {
+  background: white;
+  border: 1px solid var(--color-sand);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 20px rgba(10, 60, 38, 0.04);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.clubhouse-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(10, 60, 38, 0.08);
+  border-color: var(--color-gold-light);
+}
+
+.clubhouse-card-dark {
+  background: var(--color-augusta-dark);
+  border: 1px solid rgba(197, 160, 89, 0.2);
+  color: var(--color-cream);
+}
+
+.clubhouse-card-dark:hover {
+  border-color: var(--color-gold);
+  box-shadow: 0 12px 30px rgba(4, 32, 22, 0.5);
+}
+
+/* Gold Accent Borders */
+.gold-border-frame {
+  position: relative;
+}
+
+.gold-border-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0.5rem;
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Buttons */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold));
+  border: 1px solid var(--color-gold-dark);
+  padding: 0.875rem 2.25rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-augusta-dark);
+  box-shadow: 0 4px 15px rgba(197, 160, 89, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(197, 160, 89, 0.35);
+  background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
+}
+
+.btn-augusta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--color-augusta);
+  border: 1px solid var(--color-augusta-dark);
+  padding: 0.875rem 2.25rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: white;
+  box-shadow: 0 4px 15px rgba(10, 60, 38, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-augusta:hover {
+  transform: translateY(-2px);
+  background: var(--color-augusta-dark);
+  box-shadow: 0 8px 25px rgba(10, 60, 38, 0.25);
+}
+
+.btn-outline-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 2px solid var(--color-gold);
+  padding: 0.875rem 2.25rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-augusta-dark);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-gold:hover {
+  background: var(--color-gold);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 2px solid white;
+  padding: 0.875rem 2.25rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-white:hover {
+  background: white;
+  color: var(--color-augusta-dark);
+  transform: translateY(-1px);
+}
+
+/* Green accent stripe */
+.stripe-fairway {
+  height: 6px;
+  background: linear-gradient(90deg, var(--color-augusta-dark) 0%, var(--color-gold) 50%, var(--color-augusta-dark) 100%);
+}
+
+/* Gallery */
+.gallery-item {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-item:hover {
+  transform: scale(1.02) translateY(-2px);
+  box-shadow: 0 12px 30px rgba(10, 60, 38, 0.15);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-up-delay-1 { animation-delay: 0.1s; opacity: 0; }
+.animate-fade-up-delay-2 { animation-delay: 0.2s; opacity: 0; }
+.animate-fade-up-delay-3 { animation-delay: 0.3s; opacity: 0; }

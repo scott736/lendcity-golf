@@ -1,0 +1,17 @@
+---
+interface Props {
+  label: string;
+  title: string;
+  lead?: string;
+  centered?: boolean;
+}
+
+const { label, title, lead, centered = false } = Astro.props;
+const align = centered ? 'text-center' : '';
+---
+
+<div class:list={['mb-12', align]}>
+  <p class="section-label">{label}</p>
+  <h2 class="section-title">{title}</h2>
+  {lead && <p class:list={['section-lead', centered && 'mx-auto']}>{lead}</p>}
+</div>
