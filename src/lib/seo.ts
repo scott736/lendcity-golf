@@ -346,45 +346,42 @@ export function getAllJsonLd() {
 }
 
 export function getLlmsTxt(): string {
-  const sponsorList = sponsorTiers
-    .map((tier) => `${tier.label}: ${tier.sponsors.map((s) => s.name).join(', ')}`)
-    .join('; ');
+  const home = absoluteUrl('/');
+  const section = (hash: string) => absoluteUrl(`/#${hash}`);
+
+  const sponsorLinks = sponsorTiers
+    .flatMap((tier) =>
+      tier.sponsors.map((sponsor) => {
+        const url = sponsor.url ?? section('sponsors');
+        return `- [${sponsor.name}](${url}): ${tier.label}`;
+      }),
+    )
+    .join('\n');
 
   return lendCityText(`# ${event.name} ${event.year}
 
 > ${event.tagline}
 
-## Official site
-${absoluteUrl('/')}
+The ${event.year} ${event.shortName} takes place ${event.dateDisplay} at ${event.venue.name}, ${event.venue.city}, Ontario. Registration opens at ${event.startTimeDisplay} with ${event.meals.breakfast.toLowerCase()}. The driving range opens at ${event.rangeOpenTimeDisplay} and the shotgun start is ${event.shotgunStartDisplay}. Individual registration is $${event.pricing.individual} ${event.pricing.currency}; foursomes are $${event.pricing.foursome} ${event.pricing.currency}. Deadline: ${event.registrationDeadlineDisplay}. Contact: ${event.organizer.email}.
 
-## Event summary
-- **Date:** ${event.dateDisplay}
-- **Location:** ${event.venue.name}, ${event.venue.street}, ${event.venue.city}, ${event.venue.region} ${event.venue.postalCode}, Canada
-- **Beneficiary:** ${event.beneficiary.name} (${event.beneficiary.url})
-- **Organizer:** ${event.organizer.name} (${event.organizer.url})
-- **Contact:** ${event.organizer.email} | ${event.organizer.phone}
+## Event
 
-## Registration
-- Individual golfer: $${event.pricing.individual} ${event.pricing.currency}
-- Foursome: $${event.pricing.foursome} ${event.pricing.currency}
-- Deadline: ${event.registrationDeadlineDisplay}
-- Register: ${absoluteUrl('/#register')}
+- [Home page](${home}): Official tournament website
+- [About and schedule](${section('about')}): Tournament experience, meals, and timeline
+- [Register to play](${section('register')}): Download the registration form and payment details
+- [Sponsors](${section('sponsors')}): Title, platinum, gold, and supporting sponsors
+- [FAQ](${section('faq')}): Registration, pricing, venue, and sponsorship questions
+- [Contact](${section('contact')}): Message the tournament committee
 
-## What's included
-18 holes with golf cart, ${event.meals.breakfast.toLowerCase()}, lunch, dinner, welcome golf bag, on-course contests, raffles, and networking.
+## Sponsors
 
-## Sponsors (${event.year})
-${sponsorList}
+${sponsorLinks}
 
-## Sponsorship inquiries
-Email ${event.organizer.email}
+## Optional
 
-## Frequently asked questions
-${faqs.map((f) => `### ${f.question}\n${f.answer}`).join('\n\n')}
-
-## Related
-- LendCity Mortgages: ${event.organizer.url}
-- Harmony In Action: ${event.beneficiary.url}
-- Title sponsor: ${event.titleSponsor.name} — ${event.titleSponsor.url}
+- [Photo gallery](${section('gallery')}): Images from past LendCity golf tournaments
+- [Harmony In Action](${event.beneficiary.url}): Charity beneficiary — ${event.beneficiary.description}
+- [LendCity Mortgages](${event.organizer.url}): Tournament organizer
+- [Navacord](${event.titleSponsor.url}): ${event.year} title sponsor
 `);
 }

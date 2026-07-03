@@ -5,14 +5,19 @@ import LendCityMark from './LendCityMark.astro';
 ---
 
 <section class="relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
-  <!-- Background Image with deep Augusta Green tint overlay -->
-  <div
-    class="absolute inset-0 bg-[url('/images/gallery/P1028660.jpg')] bg-cover bg-center"
+  <!-- LCP hero image (discoverable in HTML, preloaded on the home page) -->
+  <img
+    src="/images/hero.webp"
+    alt=""
+    width="1920"
+    height="1080"
+    fetchpriority="high"
+    decoding="async"
+    class="absolute inset-0 h-full w-full object-cover"
     aria-hidden="true"
-  >
-  </div>
-  <div 
-    class="absolute inset-0 bg-gradient-to-b from-augusta-dark/80 via-augusta-dark/90 to-augusta-dark/98" 
+  />
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-augusta-dark/80 via-augusta-dark/90 to-augusta-dark/98"
     aria-hidden="true"
   ></div>
 
@@ -69,6 +74,8 @@ import LendCityMark from './LendCityMark.astro';
             <img
               src={titleSponsor.logo}
               alt={titleSponsor.name}
+              width="480"
+              height="113"
               class="h-10 w-auto max-w-[200px] object-contain brightness-0 invert md:h-12"
             />
           </a>

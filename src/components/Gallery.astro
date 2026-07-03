@@ -41,8 +41,12 @@ const photos = allPhotos.map((filename) => ({
               <img
                 src={photo.src}
                 alt={`${photo.alt} ${i + 1}`}
+                width="480"
+                height="360"
+                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 class="w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading={i < 8 ? 'eager' : 'lazy'}
+                loading={i < 4 ? 'eager' : 'lazy'}
+                decoding="async"
               />
             </div>
           </button>
@@ -175,6 +179,7 @@ const photos = allPhotos.map((filename) => ({
   loadMoreBtn?.addEventListener('click', () => {
     const batch = 24;
     const next = Math.min(loadedCount + batch, photos.length);
+    const fragment = document.createDocumentFragment();
 
     for (let i = loadedCount; i < next; i++) {
       const btn = document.createElement('button');
@@ -183,13 +188,27 @@ const photos = allPhotos.map((filename) => ({
         'gallery-item gallery-trigger group mb-4 block w-full overflow-hidden rounded-xl border border-sand bg-white p-1.5 focus:outline-none focus:ring-2 focus:ring-gold';
       btn.dataset.index = String(i);
       btn.dataset.src = photos[i];
-      btn.innerHTML = `
-        <div class="overflow-hidden rounded-lg">
-          <img src="${photos[i]}" alt="LendCity™ Golf Tournament photo ${i + 1}" class="w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-        </div>
-      `;
-      grid?.appendChild(btn);
+      btn.setAttribute('aria-label', `View LendCity Golf Tournament photo ${i + 1}`);
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'overflow-hidden rounded-lg';
+
+      const img = document.createElement('img');
+      img.src = photos[i];
+      img.alt = `LendCity Golf Tournament photo ${i + 1}`;
+      img.width = 480;
+      img.height = 360;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.sizes = '(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw';
+      img.className = 'w-full object-cover transition-transform duration-500 group-hover:scale-105';
+
+      wrapper.appendChild(img);
+      btn.appendChild(wrapper);
+      fragment.appendChild(btn);
     }
+
+    grid?.appendChild(fragment);
 
     loadedCount = next;
     if (countEl) countEl.textContent = `Showing ${loadedCount} of ${photos.length} photos`;

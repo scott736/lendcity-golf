@@ -9,6 +9,7 @@ interface Props {
   description?: string;
   ogImage?: string;
   noindex?: boolean;
+  preloadHero?: boolean;
 }
 
 const {
@@ -16,6 +17,7 @@ const {
   description = getPageDescription(),
   ogImage = absoluteUrl(event.ogImage),
   noindex = false,
+  preloadHero = false,
 } = Astro.props;
 
 const canonicalUrl = absoluteUrl(Astro.url.pathname);
@@ -34,7 +36,13 @@ const keywords = event.keywords.map((k) => lendCityText(k)).join(', ');
     <meta name="author" content={lendCityText(event.organizer.name)} />
     <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site summary" />
+    <link rel="alternate" type="text/plain; charset=utf-8" href="/llms.txt" title="LLM-readable site summary" />
+    <link rel="llms-txt" type="text/plain; charset=utf-8" href="/llms.txt" />
+    {
+      preloadHero ? (
+        <link rel="preload" as="image" href="/images/hero.webp" type="image/webp" fetchpriority="high" />
+      ) : null
+    }
 
     <!-- Local / geographic signals -->
     <meta name="geo.region" content="CA-ON" />
@@ -63,12 +71,6 @@ const keywords = event.keywords.map((k) => lendCityText(k)).join(', ');
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <link rel="shortcut icon" href="/favicon/favicon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
 
     {
       jsonLd.map((schema) => (
