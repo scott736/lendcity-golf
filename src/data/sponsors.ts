@@ -124,7 +124,7 @@ export const sponsorTiers: SponsorTier[] = [
         name: 'ESC',
         subtitle: 'Exponential Solutions Consulting',
         logo: '/images/sponsors/esc-site-logo-min.png',
-        url: 'https://www.essexcountyproperty.com/',
+        url: 'https://esconsulting.ca/',
         nofollow: true,
       },
       {
