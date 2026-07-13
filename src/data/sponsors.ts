@@ -56,7 +56,7 @@ export const sponsorTiers: SponsorTier[] = [
   },
   {
     id: 'gold',
-    label: 'Gold Sponsor',
+    label: 'Gold Sponsors',
     layout: 'featured',
     sponsors: [
       {
@@ -64,6 +64,13 @@ export const sponsorTiers: SponsorTier[] = [
         subtitle: 'RE/MAX Capital Diamond',
         logo: '/images/sponsors/jim-broad.webp',
         url: 'https://www.jimbroad.ca/',
+        nofollow: true,
+      },
+      {
+        name: 'Rook & Knight',
+        subtitle: 'Multifamily and CMHC Law',
+        logo: '/images/sponsors/rook-and-knight.webp',
+        url: 'https://rookandknight.ca',
         nofollow: true,
       },
     ],

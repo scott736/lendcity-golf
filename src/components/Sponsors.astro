@@ -47,7 +47,12 @@ function isPremierTier(tier: SponsorTier) {
 
           {
             isPremierTier(tier) ? (
-              <div class="mx-auto mt-6 max-w-2xl">
+              <div
+                class:list={[
+                  'mx-auto mt-6 grid gap-6',
+                  tier.sponsors.length > 1 ? 'max-w-5xl sm:grid-cols-2' : 'max-w-2xl',
+                ]}
+              >
                 {
                   tier.sponsors.map((sponsor) => {
                     const cardClass = tier.id === 'title'

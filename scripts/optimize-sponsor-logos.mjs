@@ -9,6 +9,7 @@ const activeLogos = [
   { file: 'navacord-title-partner.webp', square: true },
   { file: 'marcel-parent-pinnacle.webp' },
   { file: 'jim-broad.webp', black: true },
+  { file: 'rook-and-knight.webp' },
   { file: 'the-pointwellness.png.webp' },
   { file: 'p--r-give-where-you-live.png' },
   { file: 'benson.png', black: true },
