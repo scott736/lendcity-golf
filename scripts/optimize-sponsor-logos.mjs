@@ -25,6 +25,8 @@ const activeLogos = [
   { file: 'wise-oak-financial.webp' },
   { file: 'owls-nest-emporium.png', black: true },
   { file: 'windsor-firefighters-benefit-fund.webp', square: true },
+  { file: 'studio-seven.webp' },
+  { file: 'rbc.webp', square: true },
 ];
 
 async function removeNearBlackBackground(buffer, threshold = 40) {

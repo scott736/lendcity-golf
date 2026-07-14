@@ -206,6 +206,19 @@ export const sponsorTiers: SponsorTier[] = [
         url: 'https://benefitfund.ca/',
         nofollow: true,
       },
+      {
+        name: 'Studio Seven',
+        subtitle: 'Pilates Boutique',
+        logo: '/images/sponsors/studio-seven.webp',
+        url: 'https://www.studiosevenboutique.com/',
+        nofollow: true,
+      },
+      {
+        name: 'RBC',
+        logo: '/images/sponsors/rbc.webp',
+        url: 'https://www.rbc.com/',
+        nofollow: true,
+      },
     ],
   },
 ];
