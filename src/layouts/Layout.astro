@@ -77,6 +77,13 @@ const keywords = event.keywords.map((k) => lendCityText(k)).join(', ');
         <script type="application/ld+json" set:html={JSON.stringify(schema)} />
       ))
     }
+    <!-- Cloudflare Web Analytics -->
+    <script
+      is:inline
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "977d3fbb020e40c1b065f2add6785378"}'
+    ></script>
   </head>
   <body class="antialiased">
     <slot />
