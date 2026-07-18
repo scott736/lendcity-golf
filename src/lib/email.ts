@@ -1,4 +1,5 @@
-const ELASTIC_EMAIL_API_KEY = process.env.ELASTIC_EMAIL_API_KEY;
+const ELASTIC_EMAIL_API_KEY = import.meta.env.ELASTIC_EMAIL_API_KEY
+  || (typeof process !== 'undefined' ? process.env.ELASTIC_EMAIL_API_KEY : undefined);
 const ELASTIC_EMAIL_BASE_URL = 'https://api.elasticemail.com/v4';
 const DEFAULT_FROM = 'LendCity™ Golf Classic <events@lendcity.ca>';
 
