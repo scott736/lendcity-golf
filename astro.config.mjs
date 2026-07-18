@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import vercel from '@astrojs/vercel';
+import cloudflare from '@astrojs/cloudflare';
 import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
@@ -11,9 +11,12 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'always',
   },
-  adapter: vercel({
-    maxDuration: 120,
-    imageService: true,
+  adapter: cloudflare({
+    imageService: 'compile',
+    platformProxy: {
+      enabled: true,
+    },
+    prerenderEnvironment: 'node',
   }),
   integrations: [
     sitemap({

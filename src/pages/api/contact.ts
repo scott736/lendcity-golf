@@ -15,7 +15,10 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const adminEmail = process.env.ADMIN_EMAIL || 'events@lendcity.ca';
+    const adminEmail =
+      import.meta.env.ADMIN_EMAIL
+      || (typeof process !== 'undefined' ? process.env.ADMIN_EMAIL : undefined)
+      || 'events@lendcity.ca';
 
     await sendEmail({
       to: adminEmail,
