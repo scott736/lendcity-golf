@@ -34,6 +34,12 @@ export async function sendEmail(options: SendEmailOptions) {
       Subject: options.subject,
       ...(options.replyTo && { ReplyTo: options.replyTo }),
     },
+    // Click tracking rewrites links through Elastic Email tracking hosts whose
+    // TLS cert does not match — Firefox blocks CTAs. Keep off for transactional.
+    Options: {
+      TrackClicks: 'false',
+      TrackOpens: 'true',
+    },
   };
 
   const response = await fetch(`${ELASTIC_EMAIL_BASE_URL}/emails/transactional`, {
